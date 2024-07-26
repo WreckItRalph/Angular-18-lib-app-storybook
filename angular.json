@@ -91,6 +91,57 @@
           }
         }
       }
+    },
+    "ui-forms": {
+      "projectType": "library",
+      "root": "projects/ui-forms",
+      "sourceRoot": "projects/ui-forms/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ui-forms/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ui-forms/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ui-forms/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ui-forms/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "configDir": "projects/ui-forms/.storybook",
+            "browserTarget": "ui-forms:build",
+            "compodoc": false,
+            "port": 6006
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "configDir": "projects/ui-forms/.storybook",
+            "browserTarget": "ui-forms:build",
+            "compodoc": false,
+            "outputDir": "dist/storybook/ui-forms"
+          }
+        }
+      }
     }
   }
 }
